@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> 生产环境 -->
+</head>
+<body>
+    <div id="app">
+        <p>自从打开网页，已经过去{{ seconds }}秒。</p>
+        <button :disabled="buttonDisabled">测试按钮</button>
+    </div>
+
+    <script>
+        var app = new Vue(
+            {
+                el: '#app',
+                data: {
+                    seconds: 0,
+                    buttonDisabled: true
+                },
+
+                created() {
+                    // 应用启动时执行
+                    console.log("应用启动...")
+                    setInterval(() => {
+                        this.seconds++,
+                        this.buttonDisabled = !this.buttonDisabled
+                    }, 1000)
+                }
+            }
+        )
+    </script>
+</body>
+</html>
