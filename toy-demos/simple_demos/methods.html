@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> 生产环境 -->
+</head>
+<body>
+    <div id="app">
+        <p>当前状态: {{ statusFromId(status) }}</p>
+    </div>
+
+    <script>
+        var app = new Vue(
+            {
+                el: '#app',
+                data: {
+                    status: 2
+                },
+                
+                methods: {
+                    statusFromId(id) {
+                        const status = ({
+                            0: 'Sleep',
+                            1: 'Eat',
+                            2: 'Learn Vue'
+                        })[id]
+                        return status || 'Unknown: ' + id
+                    }
+                }
+                created() {
+                    // 应用启动时执行
+                    console.log("应用启动...")
+                }
+
+            }
+        )
+    </script>
+</body>
+</html>
